@@ -1,0 +1,20 @@
+default:
+    @just --list
+
+test:
+    poetry run pytest
+
+build:
+    poetry build
+
+publish:
+    echo "Publishing..."
+
+format:
+    # Source code
+    poetry run black chidata
+    poetry run isort chidata
+
+    # Tests
+    poetry run black tests
+    poetry run isort tests
