@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "chicago-food-inspection"
+version = "0.1.0"
+description = ""
+authors = ["SamEdwardes <sam.edwardes@posit.co>"]
+license = "Creative Commons Attribution 4.0 International License"
+readme = "README.md"
+packages = [{include = "chicago_food_inspection"}]
+
+[tool.poetry.dependencies]
+python = "3.11.1"
+pandas = "^2.0.2"
+ipykernel = "^6.23.1"
+sodapy = "^2.2.0"
+httpx = "^0.24.1"
+rich = "^13.4.1"
+pandera = "^0.15.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
