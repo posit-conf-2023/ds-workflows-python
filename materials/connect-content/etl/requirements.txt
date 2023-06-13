@@ -1,3 +1,9 @@
 ipykernel
 rsconnect-python
+pins
+pandera
+matplotlib
+lux
+ydata-profiling
+pandas
 ../../chidata/dist/chidata-0.1.0-py3-none-any.whl
