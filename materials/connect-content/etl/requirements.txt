@@ -1,9 +1,9 @@
-ipykernel
-rsconnect-python
-pins
-pandera
-matplotlib
-lux
-ydata-profiling
-pandas
+ipykernel==6.23.1
+matplotlib==3.7.1
+pandas==1.5.3
+pandera==0.15.1
+pins==0.8.1
+rsconnect-python==1.17.1
+ydata-profiling==4.2.0
+
 ../../chidata/dist/chidata-0.1.0-py3-none-any.whl
