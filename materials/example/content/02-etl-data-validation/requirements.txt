@@ -5,5 +5,3 @@ pandera==0.15.1
 pins==0.8.1
 rsconnect-python==1.17.1
 ydata-profiling==4.2.0
-
-../../chidata/dist/chidata-0.1.0-py3-none-any.whl

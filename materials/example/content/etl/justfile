@@ -1,4 +1,0 @@
-deploy:
-    rsconnect deploy notebook \
-        --title "City of Chicago Data ETL" \
-        notebook.ipynb

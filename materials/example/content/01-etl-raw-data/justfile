@@ -1,0 +1,7 @@
+write-manifest:
+    rsconnect write-manifest notebook notebook.ipynb
+
+deploy:
+    rsconnect deploy notebook \
+        --title "01 - Chicago Food Inspections - Raw Data ETL" \
+        notebook.ipynb
