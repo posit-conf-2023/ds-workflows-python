@@ -1,0 +1,2 @@
+run:
+    shiny run --reload src.app:app

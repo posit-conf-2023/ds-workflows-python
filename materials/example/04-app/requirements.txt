@@ -1,0 +1,6 @@
+shiny==0.4.0
+shinywidgets==0.2.1
+shinyswatch==0.2.4
+ipyleaflet==0.17.3
+pins==0.8.1
+pandas==1.5.3
