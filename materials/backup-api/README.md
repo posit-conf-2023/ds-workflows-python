@@ -6,12 +6,14 @@ This API will act as a backup in the event that students get rate-limited/blocke
 
 ### API
 
-The API can be accessed here: <>.
+The API can be accessed here: <https://colorado.posit.co/rsc/connect/#/apps/68dcd8d7-8524-4d7a-8d04-4a9c5ca96541>.
 
 ```bash
 # Get the business license data.
+curl -X 'GET' 'https://colorado.posit.co/rsc/content/68dcd8d7-8524-4d7a-8d04-4a9c5ca96541/resource/r5kz-chrr.csv?limit=3'
 
 # Get the food inspection data.
+curl -X 'GET' 'https://colorado.posit.co/rsc/content/68dcd8d7-8524-4d7a-8d04-4a9c5ca96541/resource/4ijn-s7e5.csv?limit=3'
 ```
 
 ### Update the database
