@@ -1,0 +1,12 @@
+{
+    "https://colorado.posit.co/rsc/": {
+        "server_url": "https://colorado.posit.co/rsc/",
+        "filename": "/usr/home/sam.edwardes/projects/ds-workflows-python/materials/backup-api/src",
+        "app_url": "https://colorado.posit.co/rsc/content/68dcd8d7-8524-4d7a-8d04-4a9c5ca96541/",
+        "app_id": 16997,
+        "app_guid": "68dcd8d7-8524-4d7a-8d04-4a9c5ca96541",
+        "title": "City of Chicago Backup Data API",
+        "app_mode": "python-fastapi",
+        "app_store_version": 1
+    }
+}
