@@ -4,3 +4,4 @@ pandas==1.5.3
 pins==0.8.1
 pyarrow==12.0.1
 rsconnect-python==1.17.1
+ibis-framework[postgres]==5.1.0
