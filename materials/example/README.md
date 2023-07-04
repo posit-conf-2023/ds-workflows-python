@@ -22,7 +22,7 @@ import ibis
 # Set up ibis for reading data
 con = ibis.postgres.connect(
     user="posit",
-    password=os.getenv("DB_PASSWORD"),
+    password=os.environ["CONF23_DB_PASSWORD"],
     host="posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com",
     port=5432,
     database="python_workshop"
@@ -49,7 +49,7 @@ import ibis
 # Set up ibis for reading data
 con = ibis.postgres.connect(
     user="posit",
-    password=os.getenv("DB_PASSWORD"),
+    password=os.environ["CONF23_DB_PASSWORD"],
     host="posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com",
     port=5432,
     database="python_workshop"

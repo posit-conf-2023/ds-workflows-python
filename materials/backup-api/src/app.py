@@ -21,7 +21,7 @@ async def resource(
     # Create connection to database.
     con = ibis.postgres.connect(
         user="rsw_db_admin",
-        password=os.getenv("DB_PASSWORD"),
+        password=os.environ["CONF23_DB_PASSWORD"],
         host="postgres-database-samedwardes-test7d1ba05.cpbvczwgws3n.us-east-2.rds.amazonaws.com",
         port=5432,
         database="rsw",
