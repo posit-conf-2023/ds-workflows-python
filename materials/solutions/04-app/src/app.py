@@ -15,9 +15,11 @@ from .console import console
 
 # Global data
 RAW_MAP_DATA = load_map_data()
-# ZIP_CODE_OPTIONS = {'': "All"} | {zip_code: zip_code for zip_code in RAW_MAP_DATA["zip_code"].to_list()}
-ZIP_CODE_OPTIONS = {zip_code: zip_code for zip_code in RAW_MAP_DATA["zip_code"].to_list()}
-# LICENSE_CODE_OPTIONS = {'': "All"} 
+
+ZIP_CODE_OPTIONS = {}
+for zip_code in RAW_MAP_DATA["zip_code"].to_list():
+    ZIP_CODE_OPTIONS[zip_code] = zip_code
+
 LICENSE_CODE_OPTIONS = {} 
 for location_license_data in RAW_MAP_DATA["license_data"].tolist():
     for i in location_license_data:
