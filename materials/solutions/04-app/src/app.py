@@ -11,13 +11,18 @@ from shinywidgets import output_widget, reactive_read, register_widget, render_w
 from rich.console import Console
 
 from .data import load_map_data
-
-console = Console()
+from .console import console
 
 # Global data
 RAW_MAP_DATA = load_map_data()
-ZIP_CODE_OPTIONS = {'': "All"} | {zip_code: zip_code for zip_code in RAW_MAP_DATA["zip_code"].to_list()}
-LICENSE_CODE_OPTIONS = {'': "All"} | {row["license_code"]: row["license_code"] + " - " + row["license_description"] for idx, row in RAW_MAP_DATA.iterrows()}
+# ZIP_CODE_OPTIONS = {'': "All"} | {zip_code: zip_code for zip_code in RAW_MAP_DATA["zip_code"].to_list()}
+ZIP_CODE_OPTIONS = {zip_code: zip_code for zip_code in RAW_MAP_DATA["zip_code"].to_list()}
+# LICENSE_CODE_OPTIONS = {'': "All"} 
+LICENSE_CODE_OPTIONS = {} 
+for location_license_data in RAW_MAP_DATA["license_data"].tolist():
+    for i in location_license_data:
+        LICENSE_CODE_OPTIONS[i["license_code"]] = i["license_code"] + " - " + i["license_description"]
+
 
 # Part 1: ui ----
 app_ui = ui.page_navbar(
@@ -59,7 +64,6 @@ If you identify any issues please submit a bug report [here](https://github.com/
             {"style": "margin: 15px;"},
             "posit::conf(2023) // Data science Workflows with Python 🐍"
         )
-        # ui.p("posit::conf(2023) // Data science Workflows with Python 🐍")
     )
         
 )
@@ -74,23 +78,25 @@ def server(input, output, session):
         selected_name = input.filter_name()
         selected_zip_code = input.filter_zip_code()
         selected_license_code = input.filter_license_code()
-        console.log(locals())
         
         # Get raw data
         df = RAW_MAP_DATA.copy()
+        console.log(f"Original data has {df.shape[0]:,} rows.")
         
         # Apply filters
-        if selected_name:
-            console.log(f"Filtering on Doing Business as Name: {selected_name}")
-            df = df.loc[df["doing_business_as_name"].str.contains(selected_name, case=False) | df["legal_name"].str.contains(selected_name, case=False)]
-        
         if selected_zip_code:
             console.log(f"Filtering on Zip Code: {selected_zip_code}")
             df = df.loc[df["zip_code"] == selected_zip_code]
-
+        
         if selected_license_code:
             console.log(f"Filtering on License Code: {selected_license_code}")
-            df = df.loc[df["license_code"] == selected_license_code]
+            df = df.loc[df["license_data"].apply(lambda x: any([i["license_code"] == selected_license_code for i in x])), :]
+        
+        if selected_name:
+            console.log(f"Filtering on Doing Business as Name: {selected_name}")
+            df = df.loc[df["doing_business_as_name"].str.contains(selected_name, case=False) | df["legal_name"].str.contains(selected_name, case=False)]
+
+        console.log(f"Filtered data has {df.shape[0]:,} rows.")
 
         return df
 
@@ -123,6 +129,8 @@ def create_map(df: pd.DataFrame) -> Map:
     Function to create the initial ipyleaflet Map object.
     """
     # Initialize and display when the session starts
+    console.log("Rendering map...")
+    console.log("Rendering map...")
     map = Map(
         center=(41.881832,  -87.623177), 
         zoom=11, 
@@ -138,9 +146,7 @@ def create_map(df: pd.DataFrame) -> Map:
         lat = row["latitude"]
         lon =  row["longitude"]
         name =  row["doing_business_as_name"]
-        license_id = row["license_id"]
-        license_code = row["license_code"]
-        license_description = row["license_description"]
+        license_data = row["license_data"]
         marker = Marker(
             location=(lat, lon),
             title=name,
@@ -148,12 +154,13 @@ def create_map(df: pd.DataFrame) -> Map:
         )
         marker.popup = HTML(value="".join([
             f"<p><b>Name:</b> {name}</p>",
-            f"<p><b>License ID</b>: {license_id}</p>",
-            f"<p><b>License Code/Description</b>: {license_code} - {license_description}</p>",
+            f"<p><b>Licenses:</b></p>",
+            f"""<ul>{" ".join([f'<li>{i["license_code"]} - {i["license_description"]}</li>' for i in license_data])}</ul>"""
         ]))
         markers.append(marker)
     marker_cluster = MarkerCluster(markers=markers)
     map.add_layer(marker_cluster)
+    console.log("Rendering map complete")
 
     return map
 
