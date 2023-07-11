@@ -1,2 +1,11 @@
 run:
     shiny run --reload src.app:app
+
+deploy:
+    # https://colorado.posit.co/rsc/connect/#/apps/70fb4307-7645-47e5-a75c-299ee9cbc5f8/access
+    rsconnect deploy shiny . \
+        --title "City of Chicago Food Inspection App" \
+        --environment "CONF23_DB_PASSWORD=$CONF23_DB_PASSWORD" \
+        --environment "CONF23_DB_HOST=$CONF23_DB_HOST" \
+        --app-id "70fb4307-7645-47e5-a75c-299ee9cbc5f8" \
+        --entrypoint src.app:app
