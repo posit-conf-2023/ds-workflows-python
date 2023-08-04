@@ -50,7 +50,9 @@ RSTUDIO.CLOUD ACCOUNT, ETC.
 
 **Gagandeep Singh**
 
-<!-- TODO: Gagan to add bio -->
+Gagandeep is a Solutions Engineer at Posit PBS based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.
+
+- https://github.com/gsingh91
 
 **Sam Edwardes**
 
