@@ -1,5 +1,5 @@
 ---
-title: "Model Card: your model title"
+title: "Model Card: Chicago Food Inspection Predictions"
 output:
   html_document
 ---
@@ -16,10 +16,15 @@ display(Markdown(f"""
 #| tags: [parameters]
 #| include: false
 import pins
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-raw = "https://colorado.rstudio.com/rsc/"
-paths = {"v": "sacramento/"}
-board = pins.board_urls(raw, paths, allow_pickle_read=True)
+board = pins.board_connect(
+    os.getenv("CONNECT_SERVER"),
+    api_key=os.getenv("CONNECT_API_KEY"),
+    allow_pickle_read=True
+)
 ```
 
 ```{python}
@@ -28,11 +33,13 @@ import datetime
 import pandas as pd
 import plotly.express as px
 from sklearn import metrics
+from datetime import timedelta
 import vetiver
 
-v = vetiver.VetiverModel.from_pin(board, "v")
+v = vetiver.VetiverModel.from_pin(board, "gagan/inspection_results")
+
 # your pin will most likely have a version already, but we will make one here
-v_meta = board.pin_meta("v")
+v_meta = board.pin_meta("gagan/inspection_results")
 v_meta.version = '5678'
 ```
 
@@ -41,61 +48,58 @@ A [model card](https://doi.org/10.1145/3287560.3287596) provides brief, transpar
 
 ## Model details
 
-- Developed by PERSON AND/OR TEAM
+- Developed by Gagandeep Singh(Sr Solutions Engineer@Posit) 
 ```{python}
 #| echo: false
 model_desc = v.description
-num_features = len(v.ptype.construct().dict())
+num_features = len(v.prototype.construct().dict())
+
 
 display(Markdown(f"""
 - A {model_desc} using {num_features} feature{'s'[:num_features^1]}.
 """))
+
 ```
-- More details about how model was developed and what it is predicting
-- More details on feature engineering and/or data preprocessing for model
+
+- The model is a Random forest model which predicts if a food establishment(Restaurant, Bakery or Grocery Store) in Chicago would pass or fail an inspection by Chicago Department of Public Health.
+
+- The model uses food establishment category, risk level and cumulative violations to that date as features.
+
 ```{python}
 #| echo: false
 version = v_meta.version
-time_created =  datetime.datetime
-    .strptime(v_meta.created, '%Y%m%dT%H%M%SZ')
-    .strftime('%Y-%m-%d %H:%M:%S')
+time_created =  datetime.datetime.strptime(v_meta.created, '%Y%m%dT%H%M%SZ').strftime('%Y-%m-%d %H:%M:%S')
 
 display(Markdown(f"""
 - Version {version} was created at {time_created}
 """))
+
 ```
 
-- Citation and/or license details for the model
-- If you have questions about this model, please contact PERSON@ORG.ORG
+- This model uses publicly available business license and food inspections data available from City of Chicago through a [Creative Commons license](https://creativecommons.org/publicdomain/zero/1.0/).
+- If you have questions about this model, please contact gagan@posit.co
 
 ## Intended use
 
-- The primary intended uses of this model are ...
-- The primary intended users of this model are ...
-- Some use cases are out of scope for this model, such as ...
+- This model was built as part of the solutions for the teaching exercise of "Data Science Workflows- Python Focus" workshop at Posit Conference 2023.
 
-## Important aspects/factors
+- The sole purpose of this model is to teach workshop students how to use [vetiver](https://vetiver.rstudio.com/) and [Posit Connect](https://posit.co/products/enterprise/connect/) as part of a python oriented data science workflow. It should not be considered deployment ready; and any further use of this model should update the model features and conduct performace tuning. 
 
-- Aspects or factors (demographic, environmental, technical) that are relevant to the context of this model are ...
-- In evaluating this model, we examined aspects such as ...
 
 ## Metrics
 
-- The metrics used to evaluate this model are ...
-- These metrics are computed via ...
-- We chose these metrics because ...
+- The metrics used to evaluate this model are mean squared error, mean absolute error and r2 score. 
+- These metrics are computed via sklearn.metrics.
+- We chose these metrics because they are simple and easy to understand
 
-## Training data & evaluation data
+## Training data
 
-- The training dataset for this model was ...
+- The training dataset for this model is built on food insptection results till date.
 - The training dataset for this model has the "prototype" or signature:
 ```{python}
 #| echo: false
-v.ptype.construct().schema().get("properties")
+v.prototype.construct().schema().get("properties")
 ```
-
-- The evaluation dataset used in this model card is ...
-- We chose this evaluation data because ...
 
 
 ## Quantitative analyses
@@ -108,52 +112,42 @@ v.ptype.construct().schema().get("properties")
 ## Overall model performance
 
 ```{python}
-#| echo: false
-## compute predictions for your evaluation data
-from vetiver.data import sacramento
+## use monitoring simulation data, but this should be actual data in any other use case
 
-sacramento["preds"] = v.model.predict(sacramento.drop(columns=["price"]))
+data = board.pin_read("gagan/inspection_results_monitoring")
+
 metric_set = [metrics.mean_absolute_error, metrics.mean_squared_error, metrics.r2_score]
 
-for metric in metric_set:
-    print(metric.__qualname__, ": ", metric(y_pred=sacramento["preds"], y_true=sacramento["price"]))
+# choose time period to track over
+td = timedelta(days=1)
+
+# calculate metrics
+original_metrics = vetiver.compute_metrics(
+    data=data,
+    date_var="date_obs",
+    period=td,
+    metric_set=metric_set,
+    truth="RESULTS",
+    estimate="preds",
+)
+
+original_metrics
 ```
 
-## Disaggregated model performance
 
+## Visualize model performance
+Add code to visualize model performance
 ```{python}
 #| echo: false
 
-dmp = pd.DataFrame()
-for metric in metric_set:
-    dmp[metric.__qualname__] = sacramento.groupby("type")\
-        .apply(lambda x: metric(y_pred=x["preds"], y_true=x["price"]))
-dmp
-```
-
-## Visualize model performance
-
-```{python}
-performance = px.scatter(sacramento, x="price", y = "preds", facet_row="type", trendline="ols")
-performance.update_yaxes(matches=None)
-performance.show()
-```
-
-## Make a custom plot
-
-```{python}
-custom = px.violin(sacramento, x="beds", y = "price")
-custom.show()
 ```
 
 :::
 
 ## Ethical considerations
 
-- We considered ...
+- The data is publicly available and the model does not identify the restaurant name or location.
 
 ## Caveats & recommendations
 
-- This model does ...
-- This model does not ...
-- We recommend ...
+- This model is inherently simple by design, and the students should consider improving it as a follow up learning exercise. 
