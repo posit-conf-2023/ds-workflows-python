@@ -1,8 +1,0 @@
-ipykernel
-pandas
-pandera
-httpx
-rich
-matplotlib
-rsconnect-python
-ydata-profiling
