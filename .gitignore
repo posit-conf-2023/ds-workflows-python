@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-tmp/
 
 # https://github.com/github/gitignore/raw/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
