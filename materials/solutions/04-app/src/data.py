@@ -12,7 +12,7 @@ def create_db_connection() -> ibis.BaseBackend:
     db_password = os.environ["CONF23_DB_PASSWORD"]
     db_host = os.environ["CONF23_DB_HOST"]
     db_port = 5432
-    db_database = "python_workshop"
+    db_database = "conf23_python"
 
     con = ibis.postgres.connect(
         user=db_user,

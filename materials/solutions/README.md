@@ -10,8 +10,8 @@ This repo is an example of an opinionated data science workflow for using Python
 
 | Description    | Database Host                                                                | Database Name   | Table                      |
 | -------------- | ---------------------------------------------------------------------------- | --------------- | -------------------------- |
-| Raw data       | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | python_workshop | business_license_raw       |
-| Validated data | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | python_workshop | business_license_validated |
+| Raw data       | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | conf23_python | business_license_raw       |
+| Validated data | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | conf23_python | business_license_validated |
 
 Usage:
 
@@ -25,7 +25,7 @@ con = ibis.postgres.connect(
     password=os.environ["CONF23_DB_PASSWORD"],
     host="posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com",
     port=5432,
-    database="python_workshop"
+    database="conf23_python"
 )
 
 df = con.table("business_license_validated").to_pandas()
@@ -37,8 +37,8 @@ df = con.table("business_license_validated").to_pandas()
 
 | Description    | Database Host                                                                | Database Name   | Table                     |
 | -------------- | ---------------------------------------------------------------------------- | --------------- | ------------------------- |
-| Raw data       | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | python_workshop | food_inspection_raw       |
-| Validated data | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | python_workshop | food_inspection_validated |
+| Raw data       | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | conf23_python | food_inspection_raw       |
+| Validated data | posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com | conf23_python | food_inspection_validated |
 
 Usage:
 
@@ -52,7 +52,7 @@ con = ibis.postgres.connect(
     password=os.environ["CONF23_DB_PASSWORD"],
     host="posit-conf-2023-ds-workflowsf5086c0.cpbvczwgws3n.us-east-2.rds.amazonaws.com",
     port=5432,
-    database="python_workshop"
+    database="conf23_python"
 )
 
 df = con.table("food_inspection_validated").to_pandas()
