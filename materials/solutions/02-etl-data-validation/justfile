@@ -1,0 +1,7 @@
+write-manifest:
+    rsconnect write-manifest notebook notebook.ipynb
+
+deploy:
+    rsconnect deploy notebook \
+        --title "02 - Chicago Food Inspections - Data Validation" \
+        notebook.ipynb

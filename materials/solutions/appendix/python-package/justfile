@@ -1,0 +1,25 @@
+default:
+    @just --list
+
+test:
+    poetry run pytest
+
+build:
+    poetry build
+
+publish:
+    echo "Publishing..."
+
+clean:
+    rm -rf .venv
+    rm -rf dist
+    rm -rf .pytest_cache
+
+format:
+    # Source code
+    poetry run black chidata
+    poetry run isort chidata
+
+    # Tests
+    poetry run black tests
+    poetry run isort tests

@@ -1,0 +1,4 @@
+deploy:
+    rsconnect deploy fastapi \
+        --title "City of Chicago Backup Data API" \
+        src/

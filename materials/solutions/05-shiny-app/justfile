@@ -1,0 +1,9 @@
+run:
+    shiny run --reload app.py:app
+
+deploy:
+    rsconnect deploy shiny . \
+        --title "05 - Chicago Food Inspections - Inspection App" \
+        --environment "CONF23_DB_PASSWORD=$CONF23_DB_PASSWORD" \
+        --environment "CONF23_DB_HOST=$CONF23_DB_HOST" \
+        --entrypoint app.py:app

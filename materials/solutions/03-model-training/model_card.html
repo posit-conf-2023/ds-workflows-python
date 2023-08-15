@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Model Card: Chicago Food Inspection Predictions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="model_card_files/libs/clipboard/clipboard.min.js"></script>
+<script src="model_card_files/libs/quarto-html/quarto.js"></script>
+<script src="model_card_files/libs/quarto-html/popper.min.js"></script>
+<script src="model_card_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="model_card_files/libs/quarto-html/anchor.min.js"></script>
+<link href="model_card_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="model_card_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="model_card_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="model_card_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="model_card_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Model Card: Chicago Food Inspection Predictions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<section id="section" class="level6 cell-output cell-output-display">
+<h6 class="anchored" data-anchor-id="section">2023-08-04</h6>
+</section>
+</div>
+<p>A <a href="https://doi.org/10.1145/3287560.3287596">model card</a> provides brief, transparent, responsible reporting for a trained machine learning model.</p>
+<section id="model-details" class="level2">
+<h2 class="anchored" data-anchor-id="model-details">Model details</h2>
+<ul>
+<li>Developed by Gagandeep Singh(Sr Solutions Engineer@Posit)</li>
+</ul>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<ul>
+<li>A A scikit-learn RandomForestClassifier model using 7 features.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li><p>The model is a Random forest model which predicts if a food establishment(Restaurant, Bakery or Grocery Store) in Chicago would pass or fail an inspection by Chicago Department of Public Health.</p></li>
+<li><p>The model uses food establishment category, risk level and cumulative violations to that date as features.</p></li>
+</ul>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<ul>
+<li>Version 5678 was created at 2023-08-02 15:50:36</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>This model uses publicly available business license and food inspections data available from City of Chicago through a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons license</a>.</li>
+<li>If you have questions about this model, please contact gagan@posit.co</li>
+</ul>
+</section>
+<section id="intended-use" class="level2">
+<h2 class="anchored" data-anchor-id="intended-use">Intended use</h2>
+<ul>
+<li><p>This model was built as part of the solutions for the teaching exercise of “Data Science Workflows- Python Focus” workshop at Posit Conference 2023.</p></li>
+<li><p>The sole purpose of this model is to teach workshop students how to use <a href="https://vetiver.rstudio.com/">vetiver</a> and <a href="https://posit.co/products/enterprise/connect/">Posit Connect</a> as part of a python oriented data science workflow. It should not be considered deployment ready; and any further use of this model should update the model features and conduct performace tuning.</p></li>
+</ul>
+</section>
+<section id="metrics" class="level2">
+<h2 class="anchored" data-anchor-id="metrics">Metrics</h2>
+<ul>
+<li>The metrics used to evaluate this model are mean squared error, mean absolute error and r2 score.</li>
+<li>These metrics are computed via sklearn.metrics.</li>
+<li>We chose these metrics because they are simple and easy to understand</li>
+</ul>
+</section>
+<section id="training-data" class="level2">
+<h2 class="anchored" data-anchor-id="training-data">Training data</h2>
+<ul>
+<li>The training dataset for this model is built on food insptection results till date.</li>
+<li>The training dataset for this model has the “prototype” or signature:</li>
+</ul>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>{'BAKERY': {'title': 'Bakery', 'default': 0.0, 'type': 'number'},
+ 'GROCERY_STORE': {'title': 'Grocery Store', 'default': 0.0, 'type': 'number'},
+ 'RESTAURANT': {'title': 'Restaurant', 'default': 1.0, 'type': 'number'},
+ 'HIGH_RISK': {'title': 'High Risk', 'default': 1.0, 'type': 'number'},
+ 'MEDIUM_RISK': {'title': 'Medium Risk', 'default': 0.0, 'type': 'number'},
+ 'LOW_RISK': {'title': 'Low Risk', 'default': 0.0, 'type': 'number'},
+ 'CUM_VIOLATIONS': {'title': 'Cum Violations',
+  'default': 14.0,
+  'type': 'number'}}</code></pre>
+</div>
+</div>
+</section>
+<section id="quantitative-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="quantitative-analyses">Quantitative analyses</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Overall model performance</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Visualize model performance</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## use monitoring simulation data, but this should be actual data in any other use case</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> board.pin_read(<span class="st">"gagan/inspection_results_monitoring"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>metric_set <span class="op">=</span> [metrics.mean_absolute_error, metrics.mean_squared_error, metrics.r2_score]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># choose time period to track over</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>td <span class="op">=</span> timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate metrics</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>original_metrics <span class="op">=</span> vetiver.compute_metrics(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    date_var<span class="op">=</span><span class="st">"date_obs"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    period<span class="op">=</span>td,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    metric_set<span class="op">=</span>metric_set,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    truth<span class="op">=</span><span class="st">"RESULTS"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    estimate<span class="op">=</span><span class="st">"preds"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>original_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>index</th>
+      <th>n</th>
+      <th>metric</th>
+      <th>estimate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-08-02</td>
+      <td>14874</td>
+      <td>mean_absolute_error</td>
+      <td>0.396060</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-08-02</td>
+      <td>14874</td>
+      <td>mean_squared_error</td>
+      <td>0.396060</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-08-02</td>
+      <td>14874</td>
+      <td>r2_score</td>
+      <td>-0.636664</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-08-03</td>
+      <td>15051</td>
+      <td>mean_absolute_error</td>
+      <td>0.395788</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-08-03</td>
+      <td>15051</td>
+      <td>mean_squared_error</td>
+      <td>0.395788</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023-08-03</td>
+      <td>15051</td>
+      <td>r2_score</td>
+      <td>-0.629748</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Add code to visualize model performance</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ethical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="ethical-considerations">Ethical considerations</h2>
+<ul>
+<li>The data is publicly available and the model does not identify the restaurant name or location.</li>
+</ul>
+</section>
+<section id="caveats-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="caveats-recommendations">Caveats &amp; recommendations</h2>
+<ul>
+<li>This model is inherently simple by design, and the students should consider improving it as a follow up learning exercise.</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,153 @@
+---
+title: "Model Card: Chicago Food Inspection Predictions"
+output:
+  html_document
+---
+```{python}
+#| echo: false
+from IPython.display import display, Markdown
+import datetime
+display(Markdown(f"""
+###### {datetime.date.today()}
+"""))
+```
+
+```{python}
+#| tags: [parameters]
+#| include: false
+import pins
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+board = pins.board_connect(
+    os.getenv("CONNECT_SERVER"),
+    api_key=os.getenv("CONNECT_API_KEY"),
+    allow_pickle_read=True
+)
+```
+
+```{python}
+#| include: false
+import datetime
+import pandas as pd
+import plotly.express as px
+from sklearn import metrics
+from datetime import timedelta
+import vetiver
+
+v = vetiver.VetiverModel.from_pin(board, "gagan/inspection_results")
+
+# your pin will most likely have a version already, but we will make one here
+v_meta = board.pin_meta("gagan/inspection_results")
+v_meta.version = '5678'
+```
+
+
+A [model card](https://doi.org/10.1145/3287560.3287596) provides brief, transparent, responsible reporting for a trained machine learning model.
+
+## Model details
+
+- Developed by Gagandeep Singh(Sr Solutions Engineer@Posit) 
+```{python}
+#| echo: false
+model_desc = v.description
+num_features = len(v.prototype.construct().dict())
+
+
+display(Markdown(f"""
+- A {model_desc} using {num_features} feature{'s'[:num_features^1]}.
+"""))
+
+```
+
+- The model is a Random forest model which predicts if a food establishment(Restaurant, Bakery or Grocery Store) in Chicago would pass or fail an inspection by Chicago Department of Public Health.
+
+- The model uses food establishment category, risk level and cumulative violations to that date as features.
+
+```{python}
+#| echo: false
+version = v_meta.version
+time_created =  datetime.datetime.strptime(v_meta.created, '%Y%m%dT%H%M%SZ').strftime('%Y-%m-%d %H:%M:%S')
+
+display(Markdown(f"""
+- Version {version} was created at {time_created}
+"""))
+
+```
+
+- This model uses publicly available business license and food inspections data available from City of Chicago through a [Creative Commons license](https://creativecommons.org/publicdomain/zero/1.0/).
+- If you have questions about this model, please contact gagan@posit.co
+
+## Intended use
+
+- This model was built as part of the solutions for the teaching exercise of "Data Science Workflows- Python Focus" workshop at Posit Conference 2023.
+
+- The sole purpose of this model is to teach workshop students how to use [vetiver](https://vetiver.rstudio.com/) and [Posit Connect](https://posit.co/products/enterprise/connect/) as part of a python oriented data science workflow. It should not be considered deployment ready; and any further use of this model should update the model features and conduct performace tuning. 
+
+
+## Metrics
+
+- The metrics used to evaluate this model are mean squared error, mean absolute error and r2 score. 
+- These metrics are computed via sklearn.metrics.
+- We chose these metrics because they are simple and easy to understand
+
+## Training data
+
+- The training dataset for this model is built on food insptection results till date.
+- The training dataset for this model has the "prototype" or signature:
+```{python}
+#| echo: false
+v.prototype.construct().schema().get("properties")
+```
+
+
+## Quantitative analyses
+:::{.panel-tabset}
+```{python}
+#| include: false
+## consider using a package like Pandas Profiling for automated EDA
+
+```
+## Overall model performance
+
+```{python}
+## use monitoring simulation data, but this should be actual data in any other use case
+
+data = board.pin_read("gagan/inspection_results_monitoring")
+
+metric_set = [metrics.mean_absolute_error, metrics.mean_squared_error, metrics.r2_score]
+
+# choose time period to track over
+td = timedelta(days=1)
+
+# calculate metrics
+original_metrics = vetiver.compute_metrics(
+    data=data,
+    date_var="date_obs",
+    period=td,
+    metric_set=metric_set,
+    truth="RESULTS",
+    estimate="preds",
+)
+
+original_metrics
+```
+
+
+## Visualize model performance
+Add code to visualize model performance
+```{python}
+#| echo: false
+
+```
+
+:::
+
+## Ethical considerations
+
+- The data is publicly available and the model does not identify the restaurant name or location.
+
+## Caveats & recommendations
+
+- This model is inherently simple by design, and the students should consider improving it as a follow up learning exercise. 

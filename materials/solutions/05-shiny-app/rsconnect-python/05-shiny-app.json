@@ -1,0 +1,12 @@
+{
+    "https://connect.conf23workflows.training.posit.co": {
+        "server_url": "https://connect.conf23workflows.training.posit.co",
+        "filename": "/home/sam.edwardes/ds-workflows-python/materials/solutions/05-shiny-app",
+        "app_url": "https://connect.conf23workflows.training.posit.co/content/165d9a80-a9e3-45a0-a5b4-e3e23edb919c/",
+        "app_id": 14,
+        "app_guid": "165d9a80-a9e3-45a0-a5b4-e3e23edb919c",
+        "title": "05 - Chicago Food Inspections - Inspection App",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}
