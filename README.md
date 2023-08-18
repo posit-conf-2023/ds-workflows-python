@@ -24,12 +24,17 @@ In this Python-focused workshop, we will discuss ways to improve your data scien
 
 ## Prework
 
-<!-- TODO -->
+Hi! We are excited for the 1-day “Data Science Workflows with Posit Tools — Python Focus” workshop! This workshop requires that you bring your own laptop. Before the workshop, please create a Posit Connect account:
 
-ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.
+- Visit https://connect.conf23workflows.training.posit.co.
+- Click the “Sign Up” button at the top right.
+- Sign up with your personal email.
+- Make your username the prefix of your personal email. For example:
+- Email: `edwardes.s@gmail.com`
+- Username: `edwardes.s`
+- Check your email to confirm your account. The email will be from “conf23workflows@training.rstudio.com” (check your junk folder)
+
+If you have questions in advance of the workshop, please ask on the GitHub discussions section of our repo: https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a 
 
 ## Schedule
 
