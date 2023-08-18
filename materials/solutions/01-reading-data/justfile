@@ -1,5 +1,5 @@
 write-manifest:
-    rsconnect write-manifest notebook notebook.ipynb
+    rsconnect write-manifest notebook --overwrite notebook.ipynb
 
 deploy:
     rsconnect deploy notebook \

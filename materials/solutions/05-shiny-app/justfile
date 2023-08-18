@@ -1,6 +1,12 @@
 run:
     shiny run --reload app.py:app
 
+write-manifest:
+    rsconnect write-manifest shiny . \
+        --entrypoint app.py:app \
+        --exclude justfile \
+        --overwrite
+
 deploy:
     rsconnect deploy shiny . \
         --title "05 - Chicago Food Inspections - Inspection App" \
