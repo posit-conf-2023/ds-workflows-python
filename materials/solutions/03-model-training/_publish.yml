@@ -1,0 +1,4 @@
+- source: model_card.qmd
+  connect:
+    - id: 5215f054-348b-4ba0-9b89-1c2ae21adeb8
+      url: 'https://connect.conf23workflows.training.posit.co/content/5215f054-348b-4ba0-9b89-1c2ae21adeb8/'
