@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "",
+    "text": "These are the materials for a one-day workshop on Building data science workflows in Python using Posit tools on Monday, 18 Sept 2023 at posit::conf 2023!\nIn this Python-focused workshop, we will discuss ways to improve your data science workflows. During the course, we will review packages for data validation, alerting, modeling, and more. We’ll use Posit’s open source and professional tools to string all the pieces together for an efficient workflow. We’ll discuss environments, managing deployed content, working with databases, and interoperability across data products."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "",
+    "text": "These are the materials for a one-day workshop on Building data science workflows in Python using Posit tools on Monday, 18 Sept 2023 at posit::conf 2023!\nIn this Python-focused workshop, we will discuss ways to improve your data science workflows. During the course, we will review packages for data validation, alerting, modeling, and more. We’ll use Posit’s open source and professional tools to string all the pieces together for an efficient workflow. We’ll discuss environments, managing deployed content, working with databases, and interoperability across data products."
+  },
+  {
+    "objectID": "index.html#is-this-workshop-for-me",
+    "href": "index.html#is-this-workshop-for-me",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Is this workshop for me?",
+    "text": "Is this workshop for me?\nThis workshop is for you if you…\n\nBuild finished data products starting from raw data and are looking to improve your workflow\nAre looking to expand your knowledge of Posit open source and professional tools\nWant to improve interoperability between data products in your work or on your team\nHave experience developing in Python. An analogous course with an R focus is also offered"
+  },
+  {
+    "objectID": "index.html#prework",
+    "href": "index.html#prework",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Prework",
+    "text": "Prework\nThis workshop requires that you bring your own laptop. Before the workshop, please create a Posit Connect account:\n\nVisit https://connect.conf23workflows.training.posit.co.\nClick the “Sign Up” button at the top right.\nSign up with your personal email.\nMake your username the prefix of your personal email. For example:\n\nEmail: edwardes.s@gmail.com\nUsername: edwardes.s\n\nCheck your email to confirm your account. The email will be from “conf23workflows@training.rstudio.com” (check your junk folder)\n\nIf you have questions in advance of the workshop, please ask on the GitHub discussions section of our repo: https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a"
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 10:30\nSession 1\n\n\n10:30 - 11:00\nCoffee break\n\n\n11:00 - 12:30\nSession 2\n\n\n12:30 - 13:30\nLunch break\n\n\n13:30 - 15:00\nSession 3\n\n\n15:00 - 15:30\nCoffee break\n\n\n15:30 - 17:00\nSession 4"
+  },
+  {
+    "objectID": "index.html#instructors",
+    "href": "index.html#instructors",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Instructors",
+    "text": "Instructors\nGagandeep is a Solutions Engineer at Posit PBS based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.\nSam is a Solutions Engineer at Posit PBC based out of Vancouver, British Columbia, Canada. As a Solutions Engineer he helps customers effectively use Posit’s professional products with open source Python and R tools. He is passionate about Python, R, and all things open source!"
+  },
+  {
+    "objectID": "index.html#acknowledgments",
+    "href": "index.html#acknowledgments",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\n\nThis website, including the slides, is made with Quarto. Please submit an issue on the GitHub repo for this workshop if you find something that could be fixed or improved."
+  },
+  {
+    "objectID": "index.html#reuse-and-licensing",
+    "href": "index.html#reuse-and-licensing",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Reuse and licensing",
+    "text": "Reuse and licensing\n\n This work is licensed under a Creative Commons Attribution 4.0 International License."
+  }
+]
