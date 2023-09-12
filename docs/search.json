@@ -25,7 +25,7 @@
     "href": "index.html#prework",
     "title": "Data Science Workflows with Posit tools - Python focus",
     "section": "Prework",
-    "text": "Prework\nThis workshop requires that you bring your own laptop. Before the workshop, please create a Posit Connect account:\n\nVisit https://connect.conf23workflows.training.posit.co.\nClick the “Sign Up” button at the top right.\nSign up with your personal email.\nMake your username the prefix of your personal email. For example:\n\nEmail: edwardes.s@gmail.com\nUsername: edwardes.s\n\nCheck your email to confirm your account. The email will be from “conf23workflows@training.rstudio.com” (check your junk folder)\n\nIf you have questions in advance of the workshop, please ask on the GitHub discussions section of our repo: https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a"
+    "text": "Prework\nThis workshop requires that you bring your own laptop. Before the workshop, please create a Posit Connect account:\n\nVisit https://connect.conf23workflows.training.posit.co.\nClick the “Sign Up” button at the top right.\nSign up with your personal email.\nMake your username the prefix of your personal email. For example:\n\nEmail: edwardes.s@gmail.com\nUsername: edwardes.s\n\nCheck your email to confirm your account. The email will be from “conf23workflows@training.rstudio.com” (check your junk folder)\n\nWe will be using Discord as our main communication method! To make the process go smoothly:\n\nPlease sign up for an account if you don’t already have one.\nMake sure your display name is the one you used to register for the conference.\nIn your “About Me,” put the name of your workshop: “Data Science Workflows with Posit Tools — Python Focus”\n\nCloser to the start of the conference, we will invite you to the posit::conf Discord server. Once you’ve accepted the invite, we will add you to the channel(s) for your conf workshop(s).\nIf you have questions in advance of the workshop, please ask on the GitHub discussions section of our repository."
   },
   {
     "objectID": "index.html#schedule",
@@ -39,7 +39,7 @@
     "href": "index.html#instructors",
     "title": "Data Science Workflows with Posit tools - Python focus",
     "section": "Instructors",
-    "text": "Instructors\nGagandeep is a Solutions Engineer at Posit PBS based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.\nSam is a Solutions Engineer at Posit PBC based out of Vancouver, British Columbia, Canada. As a Solutions Engineer he helps customers effectively use Posit’s professional products with open source Python and R tools. He is passionate about Python, R, and all things open source!"
+    "text": "Instructors\nGagandeep Singh is a Sr. Solutions Engineer at Posit PBC based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.\nSam Edwardes is a Solutions Engineer at Posit PBC based out of Vancouver, British Columbia, Canada. As a Solutions Engineer he helps customers effectively use Posit’s professional products with open source Python and R tools. He is passionate about Python, R, and all things open source!"
   },
   {
     "objectID": "index.html#acknowledgments",
@@ -47,6 +47,13 @@
     "title": "Data Science Workflows with Posit tools - Python focus",
     "section": "Acknowledgments",
     "text": "Acknowledgments\n\nThis website, including the slides, is made with Quarto. Please submit an issue on the GitHub repo for this workshop if you find something that could be fixed or improved."
+  },
+  {
+    "objectID": "index.html#notice",
+    "href": "index.html#notice",
+    "title": "Data Science Workflows with Posit tools - Python focus",
+    "section": "Notice",
+    "text": "Notice\n\nThe sample data science project used for this workshop provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one’s own risk."
   },
   {
     "objectID": "index.html#reuse-and-licensing",

@@ -16,7 +16,7 @@ This workshop is for you if you...
 - Build finished data products starting from raw data and are looking to improve your workflow
 - Are looking to expand your knowledge of Posit open source and professional tools
 - Want to improve interoperability between data products in your work or on your team
-- Have experience developing in Python. An analogous course with an R focus is also offered
+- Have experience developing in Python. An [analogous course with an R focus](https://posit-conf-2023.github.io/ds-workflows-r/) is also offered
 
 ## Prework
 
@@ -30,7 +30,15 @@ This workshop requires that you bring your own laptop. Before the workshop, plea
   -  Username: edwardes.s
 - Check your email to confirm your account. The email will be from “conf23workflows@training.rstudio.com” (check your junk folder)
 
-If you have questions in advance of the workshop, please ask on the GitHub discussions section of our repo: [https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a](https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a)
+We will be using Discord as our main communication method! To make the process go smoothly:
+
+- Please [sign up for an account](https://discord.com/) if you don’t already have one.
+- Make sure your [display name](https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names#h_01GXPQABMYGEHGPRJJXJMPHF5C) is the one you used to register for the conference.
+- In your “About Me,” put the name of your workshop: “Data Science Workflows with Posit Tools — Python Focus”
+
+Closer to the start of the conference, we will invite you to the posit::conf Discord server. Once you’ve accepted the invite, we will add you to the channel(s) for your conf workshop(s).
+
+If you have questions in advance of the workshop, please ask on the [GitHub discussions](https://github.com/posit-conf-2023/ds-workflows-python/discussions/categories/q-a) section of our repository.
 
 ## Schedule
 
@@ -48,13 +56,17 @@ If you have questions in advance of the workshop, please ask on the GitHub discu
 
 ## Instructors
 
-Gagandeep is a Solutions Engineer at Posit PBS based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.
+**Gagandeep Singh** is a Sr. Solutions Engineer at Posit PBC based in Toronto, Canada. He is a former software engineer and data scientist who has worked in a variety of cross-technology teams before joining Posit.
 
-Sam is a Solutions Engineer at Posit PBC based out of Vancouver, British Columbia, Canada. As a Solutions Engineer he helps customers effectively use Posit's professional products with open source Python and R tools. He is passionate about Python, R, and all things open source!
+**Sam Edwardes** is a Solutions Engineer at Posit PBC based out of Vancouver, British Columbia, Canada. As a Solutions Engineer he helps customers effectively use Posit's professional products with open source Python and R tools. He is passionate about Python, R, and all things open source!
 
 ## Acknowledgments {.appendix}
 
 This website, including the slides, is made with [Quarto](https://quarto.org/). Please [submit an issue](https://github.com/posit-conf-2023/vetiver/issues) on the GitHub repo for this workshop if you find something that could be fixed or improved.
+
+## Notice {.appendix}
+
+The sample data science project used for this workshop provides applications using data that has been modified for use from its original source, [www.cityofchicago.org](www.cityofchicago.org), the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one’s own risk.
 
 ## Reuse and licensing {.appendix}
 
