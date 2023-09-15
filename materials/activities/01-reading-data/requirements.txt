@@ -1,0 +1,4 @@
+ipykernel==6.23.1
+pandas==1.5.3
+rsconnect-python==1.17.1
+ibis-framework[postgres]==5.1.0
