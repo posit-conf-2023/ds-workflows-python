@@ -4,7 +4,6 @@ shinywidgets==0.2.1
 ipyleaflet==0.17.3
 loguru==0.7.0
 shinyswatch==0.2.4
-pins==0.8.1
 pandas==1.5.3
 pyarrow==12.0.1
 rich==13.4.2
