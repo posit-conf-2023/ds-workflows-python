@@ -90,7 +90,7 @@ parsy==2.1
 pathspec==0.11.2
 pexpect==4.8.0
 pickleshare==0.7.5
-pins==0.8.1
+pins==0.8.3
 pip-tools==6.13.0
 platformdirs==3.8.0
 plotly==5.15.0
