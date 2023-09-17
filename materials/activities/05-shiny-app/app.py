@@ -127,7 +127,8 @@ def server(input, output, session):
         # Call the vetiver endpoint to get the predictions.
         all_selected_businesses = pd.concat(frames)
 
-        # TODO: update `endpoint` to point to the vetiver model on Connect
+        # TODO: update `endpoint` to point to the URL for the Vetiver model on Connect.
+        # TIP: to get the URL, open https://connect.conf23workflows.training.posit.co/connect/#/apps/5ebb5685-bdcc-4951-b91e-dbf8ba64d9aa/access
         endpoint = ...
         
         # TODO: use `vetiver.predict()` to predict the result for all of the rows in
